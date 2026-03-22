@@ -32,20 +32,10 @@ closeBtn.addEventListener("click", () => showSection(homeSection));
 
 showSection(homeSection);
 document.addEventListener("DOMContentLoaded", function () {
-  if (typeof tsParticles !== "undefined") {
+ window.onload = function() {
+  if (window.tsParticles) {
     tsParticles.load({
-      id: "tsparticles",
-      options: {
-        fullScreen: { enable: false },
-        // ... your starfield config
-      },
-    });
-  } else {
-    console.error("tsParticles library failed to load from CDN");
-  }
-});
-tsParticles.load({
-  id: "tsparticles",
+     id: "tsparticles",
   options: {
     fullScreen: { enable: false }, // MANDATORY: Keeps particles inside the div
     background: { color: "transparent" },
@@ -108,5 +98,65 @@ tsParticles.load({
         value: 1,
       },
     },
-  },
+  
+      },
+    });
+  } else {
+    console.error("tsParticles library failed to load from CDN");
+  }
 });
+window.onload = function() {
+  console.log("Window loaded, checking for tsParticles...");
+  
+  if (window.tsParticles) {
+    tsParticles.load({
+      id: "tsparticles",
+      options: {
+        fullScreen: { enable: false }, 
+        background: { color: "transparent" },
+        interactivity: {
+          events: {
+            onClick: { enable: true, mode: "repulse" },
+            onHover: { enable: true, mode: "bubble" },
+          },
+          modes: {
+            bubble: {
+              distance: 200,
+              duration: 2,
+              opacity: 0,
+              size: 0,
+              speed: 3,
+            },
+            repulse: {
+              distance: 400,
+              duration: 0.4,
+            },
+          },
+        },
+        particles: {
+          color: { value: "#ffffff" },
+          move: {
+            direction: "none",
+            enable: true,
+            outModes: "out",
+            random: true,
+            speed: 0.3,
+          },
+          number: {
+            density: { enable: true },
+            value: 600,
+          },
+          opacity: {
+            animation: { enable: true, speed: 5 },
+            value: { min: 0.3, max: 0.6 },
+          },
+          shape: { type: "circle" },
+          size: { value: 1 },
+        },
+      },
+    });
+    console.log("tsParticles initialized inside #tsparticles");
+  } else {
+    console.error("tsParticles library failed to load from CDN");
+  }
+}; // This was }); before, which caused the crash
