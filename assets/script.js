@@ -31,6 +31,19 @@ skillsSecondBtn.addEventListener("click", () => showSection(skillsSection));
 closeBtn.addEventListener("click", () => showSection(homeSection));
 
 showSection(homeSection);
+document.addEventListener("DOMContentLoaded", function () {
+  if (typeof tsParticles !== "undefined") {
+    tsParticles.load({
+      id: "tsparticles",
+      options: {
+        fullScreen: { enable: false },
+        // ... your starfield config
+      },
+    });
+  } else {
+    console.error("tsParticles library failed to load from CDN");
+  }
+});
 tsParticles.load({
   id: "tsparticles",
   options: {
