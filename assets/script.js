@@ -1,162 +1,88 @@
-const infoBtn = document.getElementById("infoBtn");
-const infoSection = document.getElementById("info");
-
-const contactBtn = document.getElementById("contactBtn");
-const contactSection = document.getElementById("contact");
-
-const skillsBtn = document.getElementById("skillsBtn");
-const skillsSecondBtn = document.getElementById("skillsSecondBtn");
-
-const skillsSection = document.getElementById("skillsS");
-
-const closeBtn = document.getElementById("homeBtn");
-const homeSection = document.getElementById("smallerHome");
-
-const sections = [homeSection, infoSection, contactSection, skillsSection];
-
-function showSection(activeSection) {
-  sections.forEach((section) => {
-    if (section === activeSection) {
-      section.classList.add("show");
-    } else {
-      section.classList.remove("show");
-    }
-  });
-}
-
-infoBtn.addEventListener("click", () => showSection(infoSection));
-contactBtn.addEventListener("click", () => showSection(contactSection));
-skillsBtn.addEventListener("click", () => showSection(skillsSection));
-skillsSecondBtn.addEventListener("click", () => showSection(skillsSection));
-closeBtn.addEventListener("click", () => showSection(homeSection));
-
-showSection(homeSection);
 document.addEventListener("DOMContentLoaded", function () {
- window.onload = function() {
-  if (window.tsParticles) {
-    tsParticles.load({
-     id: "tsparticles",
-  options: {
-    fullScreen: { enable: false }, // MANDATORY: Keeps particles inside the div
-    background: { color: "transparent" },
-    // background: {
-    //   repeat: "no-repeat",
-    //   size: "10%",
-    //   position: "60% 50%",
-    // }
-    interactivity: {
-      events: {
-        onClick: {
-          enable: true,
-          mode: "repulse",
-        },
-        onHover: {
-          enable: true,
-          mode: "bubble",
-        },
-      },
-      modes: {
-        bubble: {
-          distance: 200,
-          duration: 2,
-          opacity: 0,
-          size: 0,
-          speed: 3,
-        },
-        repulse: {
-          distance: 400,
-          duration: 0.4,
-        },
-      },
-    },
-    particles: {
-      color: { value: "#ffffff" },
-      move: {
-        direction: "none",
-        enable: true,
-        outModes: "out",
-        random: true,
-        speed: 0.3,
-      },
-      number: {
-        density: {
-          enable: true,
-        },
-        value: 600,
-      },
-      opacity: {
-        animation: {
-          enable: true,
-          speed: 5,
-        },
-        value: { min: 0.3, max: 0.6 },
-      },
-      shape: {
-        type: "circle",
-      },
-      size: {
-        value: 1,
-      },
-    },
-  
-      },
+  const infoBtn = document.getElementById("infoBtn");
+  const infoSection = document.getElementById("info");
+  const contactBtn = document.getElementById("contactBtn");
+  const contactSection = document.getElementById("contact");
+  const skillsBtn = document.getElementById("skillsBtn");
+  const skillsSecondBtn = document.getElementById("skillsSecondBtn");
+  const skillsSection = document.getElementById("skillsS");
+  const homeBtn = document.getElementById("homeBtn");
+  const homeSection = document.getElementById("smallerHome");
+
+  const sections = [homeSection, infoSection, contactSection, skillsSection];
+
+  function showSection(activeSection) {
+    sections.forEach((section) => {
+      if (section === activeSection) {
+        section.style.display = "block"; // Force visibility
+        section.classList.add("show");
+      } else {
+        section.style.display = "none"; // Hide others
+        section.classList.remove("show");
+      }
     });
-  } else {
-    console.error("tsParticles library failed to load from CDN");
   }
-});
-window.onload = function() {
-  console.log("Window loaded, checking for tsParticles...");
-  
+
+  // Event Listeners
+  infoBtn.addEventListener("click", (e) => {
+    e.preventDefault();
+    showSection(infoSection);
+  });
+  contactBtn.addEventListener("click", (e) => {
+    e.preventDefault();
+    showSection(contactSection);
+  });
+  skillsBtn.addEventListener("click", (e) => {
+    e.preventDefault();
+    showSection(skillsSection);
+  });
+  skillsSecondBtn.addEventListener("click", (e) => {
+    e.preventDefault();
+    showSection(skillsSection);
+  });
+  homeBtn.addEventListener("click", (e) => {
+    e.preventDefault();
+    showSection(homeSection);
+  });
+
+  // Initialize
+  showSection(homeSection);
+
+  // Particles Initialization
   if (window.tsParticles) {
     tsParticles.load({
       id: "tsparticles",
       options: {
-        fullScreen: { enable: false }, 
+        fullScreen: { enable: false },
         background: { color: "transparent" },
-        interactivity: {
-          events: {
-            onClick: { enable: true, mode: "repulse" },
-            onHover: { enable: true, mode: "bubble" },
+        particles: {
+          number: { value: 150, density: { enable: true } },
+          color: { value: "#ffffff" },
+          shape: { type: "circle" },
+          opacity: {
+            value: { min: 0.3, max: 0.6 },
+            animation: { enable: true, speed: 1 },
           },
-          modes: {
-            bubble: {
-              distance: 200,
-              duration: 2,
-              opacity: 0,
-              size: 0,
-              speed: 3,
-            },
-            repulse: {
-              distance: 400,
-              duration: 0.4,
-            },
+          size: { value: 2 },
+          move: {
+            enable: true,
+            speed: 0.5,
+            direction: "none",
+            random: true,
+            outModes: "out",
           },
         },
-        particles: {
-          color: { value: "#ffffff" },
-          move: {
-            direction: "none",
-            enable: true,
-            outModes: "out",
-            random: true,
-            speed: 0.3,
+        interactivity: {
+          events: {
+            onHover: { enable: true, mode: "bubble" },
+            onClick: { enable: true, mode: "repulse" },
           },
-          number: {
-            density: { enable: true },
-            value: 600,
+          modes: {
+            bubble: { distance: 200, size: 4, duration: 2, opacity: 0.8 },
+            repulse: { distance: 200, duration: 0.4 },
           },
-          opacity: {
-            animation: { enable: true, speed: 5 },
-            value: { min: 0.3, max: 0.6 },
-          },
-          shape: { type: "circle" },
-          size: { value: 1 },
         },
       },
     });
-    console.log("tsParticles initialized inside #tsparticles");
-  } else {
-    console.error("tsParticles library failed to load from CDN");
   }
-}; // This was }); before, which caused the crash
+});
