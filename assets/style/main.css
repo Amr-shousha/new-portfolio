@@ -227,7 +227,7 @@ body .projects-container a {
 body .projects-container .project-card {
   height: 100%;
   padding: 10px;
-  border: 2px solid rgb(207, 207, 207);
+  border: 1px solid rgb(207, 207, 207);
   transition: filter 0.4s ease;
 }
 @media (max-width: 480px) {
