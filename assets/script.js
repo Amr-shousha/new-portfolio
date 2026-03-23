@@ -56,17 +56,30 @@ document.addEventListener("DOMContentLoaded", function () {
         fullScreen: { enable: false },
         background: { color: "transparent" },
         particles: {
-          number: { value: 150, density: { enable: true } },
+          number: {
+            value: 400, // Higher count for the starfield effect
+            density: {
+              enable: true,
+              area: 800,
+            },
+          },
           color: { value: "#ffffff" },
           shape: { type: "circle" },
           opacity: {
-            value: { min: 0.3, max: 0.6 },
-            animation: { enable: true, speed: 1 },
+            value: { min: 0.1, max: 0.8 },
+            animation: {
+              enable: true,
+              speed: 1,
+              minimumValue: 0.1,
+              sync: false, // Individual twinkling
+            },
           },
-          size: { value: 2 },
+          size: {
+            value: { min: 0.5, max: 1.5 }, // Tiny star-like sizes
+          },
           move: {
             enable: true,
-            speed: 0.5,
+            speed: 0.1, // Very slow drifting
             direction: "none",
             random: true,
             outModes: "out",
@@ -78,8 +91,16 @@ document.addEventListener("DOMContentLoaded", function () {
             onClick: { enable: true, mode: "repulse" },
           },
           modes: {
-            bubble: { distance: 200, size: 4, duration: 2, opacity: 0.8 },
-            repulse: { distance: 200, duration: 0.4 },
+            bubble: {
+              distance: 200,
+              size: 4,
+              duration: 2,
+              opacity: 0.8,
+            },
+            repulse: {
+              distance: 200,
+              duration: 0.4,
+            },
           },
         },
       },
