@@ -75,7 +75,6 @@ body .hero-container {
   overflow: hidden;
   height: 100vh;
   padding: 35px 35px;
-  background-color: #060606;
 }
 @media (max-width: 767.98px) {
   body .hero-container {
