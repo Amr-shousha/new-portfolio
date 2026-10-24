@@ -118,7 +118,7 @@ body {
         position: absolute;
         top: 35%;
         right: 50px;
-        width: 55%;
+        width: 65%;
         height: 60%;
         transition: opacity 4s ease;
         flex-direction: column;
@@ -137,12 +137,12 @@ body {
 
           a {
             text-align: center;
-            width: 120px;
+            width: 150px;
             padding: 5px 0;
-            background-color: transparent;
-            border: 1px solid;
-            font-weight: 300;
-            color: $text-color;
+            background-color: rgb(174, 255, 255);
+            border: 2px solid #2be6ff;
+            font-weight: 600;
+            color: rgb(54, 54, 54);
             text-decoration: none;
           }
         }

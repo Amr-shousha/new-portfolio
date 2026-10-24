@@ -14,7 +14,7 @@
   font-weight: 600;
 }
 body {
-  font-family: "Main" !important;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
   color: rgb(207, 207, 207) !important;
   background-color: #0e0e0e !important;
 }
@@ -44,7 +44,7 @@ body .icons-container {
   display: flex;
   gap: 20px;
   flex-wrap: wrap;
-  width: 150px;
+  max-width: 270px;
 }
 body .icons-container img {
   width: 50px;
@@ -97,7 +97,7 @@ body .hero-container .main-content .smaller-container {
   position: absolute;
   top: 35%;
   right: 50px;
-  width: 55%;
+  width: 65%;
   height: 60%;
   transition: opacity 4s ease;
   flex-direction: column;
@@ -115,12 +115,13 @@ body .hero-container .main-content .smaller-container .btn-container {
 }
 body .hero-container .main-content .smaller-container .btn-container a {
   text-align: center;
-  width: 120px;
+  width: 150px;
   padding: 5px 0;
-  background-color: transparent;
-  border: 1px solid;
-  font-weight: 300;
-  color: rgb(207, 207, 207);
+  background-color: rgb(174, 255, 255);
+  border: 2px solid #2be6ff;
+
+  font-weight: 600;
+  color: rgb(54, 54, 54);
   text-decoration: none;
 }
 body .hero-container .main-content .smaller-container .smaller-container-p {
@@ -128,7 +129,7 @@ body .hero-container .main-content .smaller-container .smaller-container-p {
   letter-spacing: 2px;
   font-size: 20px;
   display: block;
-  max-width: 600px;
+  max-width: 640px;
   margin-top: 20px;
 }
 @media (max-width: 767.98px) {
@@ -153,10 +154,16 @@ body .hero-container .main-content .smaller-container .smaller-container-p {
   body .hero-container .main-content .smaller-container .main-contact-content {
     display: flex;
     flex-direction: column;
+    /* justify-content: center; */
     align-items: center;
     width: 100%;
   }
-  body .hero-container .main-content .smaller-container .main-contact-content .section-title {
+  body
+    .hero-container
+    .main-content
+    .smaller-container
+    .main-contact-content
+    .section-title {
     text-align: center;
     margin-left: -30px;
   }
@@ -247,4 +254,4 @@ body .projects-container .project-card:hover {
 .gray-window-content {
   position: relative;
   z-index: 1;
-}/*# sourceMappingURL=main.css.map */
+} /*# sourceMappingURL=main.css.map */

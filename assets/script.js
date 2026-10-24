@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const contactBtn = document.getElementById("contactBtn");
   const contactSection = document.getElementById("contact");
   const skillsBtn = document.getElementById("skillsBtn");
-  const skillsSecondBtn = document.getElementById("skillsSecondBtn");
+  const contactSecondBtn = document.getElementById("contactSecondBtn");
   const skillsSection = document.getElementById("skillsS");
   const homeBtn = document.getElementById("homeBtn");
   const homeSection = document.getElementById("smallerHome");
@@ -36,9 +36,9 @@ document.addEventListener("DOMContentLoaded", function () {
     e.preventDefault();
     showSection(skillsSection);
   });
-  skillsSecondBtn.addEventListener("click", (e) => {
+  contactSecondBtn.addEventListener("click", (e) => {
     e.preventDefault();
-    showSection(skillsSection);
+    showSection(contactSection);
   });
   homeBtn.addEventListener("click", (e) => {
     e.preventDefault();
