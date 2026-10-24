@@ -1,0 +1,286 @@
+// 1. Variables
+$main-font: "Main";
+$text-color: rgb(207, 207, 207);
+$bg-color: #0e0e0e;
+$border-color: #e0dbdb;
+$transition-speed: 0.4s;
+
+// 2. Font Faces
+// @charset "UTF-8";
+
+@mixin font-face($weight, $path) {
+  @font-face {
+    font-family: $main-font;
+    src: url($path);
+    font-weight: $weight;
+  }
+}
+
+@include font-face(
+  300,
+  "../fonts/M_PLUS_Code_Latin/static/MPLUSCodeLatin-Light.ttf"
+);
+@include font-face(
+  500,
+  "../fonts/M_PLUS_Code_Latin/static/MPLUSCodeLatin-Medium.ttf"
+);
+@include font-face(
+  600,
+  "../fonts/M_PLUS_Code_Latin/static/MPLUSCodeLatin-SemiBold.ttf"
+);
+
+// 3. Global Styles
+body {
+  font-family: $main-font !important;
+  color: $text-color !important;
+  background-color: $bg-color !important;
+
+  // Nesting everything inside body as per your CSS
+  #bigger-nav {
+    position: fixed;
+    z-index: 3;
+    top: 20vh;
+    margin-left: 45px;
+    font-weight: 300;
+    font-size: 16px;
+
+    @media (max-width: 767.98px) {
+      font-size: 13px;
+      right: 30px;
+      top: 14vh;
+
+      .navbar-toggler {
+        font-size: 24px;
+        position: fixed;
+        right: 35px;
+        top: 12vh;
+      }
+    }
+  }
+
+  .icons-container {
+    margin-top: 50px;
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    width: 150px;
+
+    img {
+      width: 50px;
+      transition: all $transition-speed ease;
+      &:hover {
+        filter: brightness(60%);
+      }
+    }
+
+    a {
+      color: rgba(0, 0, 0, 0);
+    }
+  }
+
+  .section-title {
+    font-family: $main-font;
+    font-weight: 300;
+    font-size: 30px;
+    color: $text-color;
+    letter-spacing: 2px;
+
+    @media (max-width: 767.98px) {
+      font-size: 24px;
+    }
+  }
+
+  .hero-container {
+    position: relative;
+    overflow: hidden;
+    height: 100vh;
+    padding: 35px 35px;
+
+    @media (max-width: 767.98px) {
+      padding: 40px 20px 20px 20px;
+    }
+
+    .main-content {
+      position: relative;
+      z-index: 2;
+      overflow: hidden;
+      margin: 0;
+      border: 1px solid $border-color;
+      width: 100%;
+      height: 100%;
+      padding: 30px;
+      background-size: 400% 400%;
+
+      .smaller-container {
+        display: none;
+        padding: 0 10% 0 0;
+        margin: 0;
+        position: absolute;
+        top: 35%;
+        right: 50px;
+        width: 55%;
+        height: 60%;
+        transition: opacity 4s ease;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: flex-start;
+
+        &.show {
+          display: flex;
+        }
+
+        .btn-container {
+          display: flex;
+          gap: 20px;
+          align-items: center;
+          flex-wrap: wrap;
+
+          a {
+            text-align: center;
+            width: 120px;
+            padding: 5px 0;
+            background-color: transparent;
+            border: 1px solid;
+            font-weight: 300;
+            color: $text-color;
+            text-decoration: none;
+          }
+        }
+
+        .smaller-container-p {
+          font-weight: 300;
+          letter-spacing: 2px;
+          font-size: 20px;
+          display: block;
+          max-width: 600px;
+          margin-top: 20px;
+
+          @media (max-width: 767.98px) {
+            font-size: 18px;
+            margin-top: 5px;
+            width: auto;
+          }
+          @media (max-width: 480px) {
+            font-size: 16px;
+          }
+        }
+
+        @media (max-width: 767.98px) {
+          padding: 0;
+          width: auto;
+          left: 40px;
+          top: 40%;
+
+          .main-contact-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+
+            .section-title {
+              text-align: center;
+              margin-left: -30px;
+            }
+          }
+        }
+      }
+
+      .smaller-container-icons {
+        right: 0px;
+        left: 30px;
+      }
+
+      .name-section {
+        b {
+          letter-spacing: 2px;
+          font-weight: 300;
+        }
+        h1 {
+          font-size: 55px;
+          letter-spacing: 6px;
+          font-weight: 300;
+          word-spacing: -16px;
+          display: block;
+          @media (max-width: 767.98px) {
+            font-size: 40px;
+          }
+        }
+      }
+    }
+  }
+
+  .projects-container {
+    overflow: hidden;
+    padding: 10px 70px;
+    width: 100%;
+
+    #copyRight {
+      position: relative;
+      bottom: 0;
+      left: -60px;
+      width: 100%;
+      text-align: left;
+      font-size: 12px;
+      font-weight: 100;
+      letter-spacing: 1px;
+
+      span {
+        font-size: 30px;
+        margin: 0 0 -15px 0;
+      }
+    }
+
+    a {
+      text-decoration: none;
+      color: $text-color;
+    }
+
+    .project-card {
+      height: 100%;
+      padding: 10px;
+      border: 1px solid $text-color;
+      transition: filter $transition-speed ease;
+
+      @media (max-width: 480px) {
+        padding: 5px;
+      }
+
+      img {
+        width: 200px;
+      }
+
+      .card-content {
+        margin: 10px 0 0 0;
+        .logos img {
+          width: 40px;
+        }
+      }
+
+      &:hover {
+        filter: opacity(0.5);
+      }
+    }
+  }
+}
+
+// 4. Background/Utility Classes
+#main-content-wraper {
+  position: relative;
+  z-index: 1;
+  height: 100%;
+  overflow: hidden;
+}
+
+#tsparticles {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+}
+
+.gray-window-content {
+  position: relative;
+  z-index: 1;
+}
