@@ -1,22 +1,9 @@
-@font-face {
-  font-family: "Main";
-  src: url("../fonts/M_PLUS_Code_Latin/static/MPLUSCodeLatin-Light.ttf");
-  font-weight: 300;
-}
-@font-face {
-  font-family: "Main";
-  src: url("../fonts/M_PLUS_Code_Latin/static/MPLUSCodeLatin-Medium.ttf");
-  font-weight: 500;
-}
-@font-face {
-  font-family: "Main";
-  src: url("../fonts/M_PLUS_Code_Latin/static/MPLUSCodeLatin-SemiBold.ttf");
-  font-weight: 600;
-}
+@charset "UTF-8";
 body {
   font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
   color: rgb(207, 207, 207) !important;
   background-color: #0e0e0e !important;
+  /* Navigation */
 }
 body #bigger-nav {
   position: fixed;
@@ -39,6 +26,9 @@ body #bigger-nav {
     top: 12vh;
   }
 }
+body {
+  /* Icons Container */
+}
 body .icons-container {
   margin-top: 50px;
   display: flex;
@@ -56,8 +46,10 @@ body .icons-container img:hover {
 body .icons-container a {
   color: rgba(0, 0, 0, 0);
 }
+body {
+  /* Section Title */
+}
 body .section-title {
-  font-family: "Main";
   font-weight: 300;
   font-size: 30px;
   color: rgb(207, 207, 207);
@@ -67,6 +59,9 @@ body .section-title {
   body .section-title {
     font-size: 24px;
   }
+}
+body {
+  /* Hero Section */
 }
 body .hero-container {
   position: relative;
@@ -89,9 +84,9 @@ body .hero-container .main-content {
   height: 100%;
   padding: 30px;
   background-size: 400% 400%;
+  /* Smaller Container Inside Hero */
 }
 body .hero-container .main-content .smaller-container {
-  display: none;
   padding: 0 10% 0 0;
   margin: 0;
   position: absolute;
@@ -99,13 +94,24 @@ body .hero-container .main-content .smaller-container {
   right: 50px;
   width: 65%;
   height: 60%;
-  transition: opacity 4s ease;
   flex-direction: column;
   justify-content: flex-start;
   align-items: flex-start;
+  /* --- بداية التعديلات الحركية (Smooth Transitions) --- */
+  display: flex; /* نجعلها دائمًا flex */
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(12px); /* نزول خفيف للأسفل ليبدأ منه التأثير */
+  pointer-events: none; /* لمنع الضغط على الأزرار المخفية في الخلفية */
+  /* حركة ناعمة وسريعة جداً بأسلوب ease-out */
+  transition: opacity 0.35s ease-out, transform 0.35s ease-out, visibility 0.35s ease-out;
+  /* الحالة النشطة عند إضافة الكلاس */
 }
 body .hero-container .main-content .smaller-container.show {
-  display: flex;
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0); /* يصعد لمكانه الطبيعي */
+  pointer-events: auto; /* تفعيل التفاعل والأزرار */
 }
 body .hero-container .main-content .smaller-container .btn-container {
   display: flex;
@@ -117,11 +123,22 @@ body .hero-container .main-content .smaller-container .btn-container a {
   text-align: center;
   width: 150px;
   padding: 5px 0;
-  background-color: rgb(174, 255, 255);
-  border: 2px solid #2be6ff;
-
+  background-color: rgba(180, 200, 194, 0.2431372549);
+  border: 2px solid #ced0d3;
+  border-radius: 20px;
   font-weight: 600;
-  color: rgb(54, 54, 54);
+  color: rgb(255, 253, 253);
+  text-decoration: none;
+}
+body .hero-container .main-content .smaller-container .btn-container .special-btn {
+  text-align: center;
+  width: 150px;
+  padding: 5px 0;
+  background-color: #10b981;
+  border: 2px solid #ced0d3;
+  border-radius: 20px;
+  font-weight: 600;
+  color: rgb(255, 253, 253);
   text-decoration: none;
 }
 body .hero-container .main-content .smaller-container .smaller-container-p {
@@ -154,16 +171,10 @@ body .hero-container .main-content .smaller-container .smaller-container-p {
   body .hero-container .main-content .smaller-container .main-contact-content {
     display: flex;
     flex-direction: column;
-    /* justify-content: center; */
     align-items: center;
     width: 100%;
   }
-  body
-    .hero-container
-    .main-content
-    .smaller-container
-    .main-contact-content
-    .section-title {
+  body .hero-container .main-content .smaller-container .main-contact-content .section-title {
     text-align: center;
     margin-left: -30px;
   }
@@ -171,6 +182,9 @@ body .hero-container .main-content .smaller-container .smaller-container-p {
 body .hero-container .main-content .smaller-container-icons {
   right: 0px;
   left: 30px;
+}
+body .hero-container .main-content {
+  /* Name Section Header */
 }
 body .hero-container .main-content .name-section b {
   letter-spacing: 2px;
@@ -188,10 +202,71 @@ body .hero-container .main-content .name-section h1 {
     font-size: 40px;
   }
 }
+body {
+  /* Business Value Section */
+}
+body .business-value-container {
+  padding: 80px 70px;
+  width: 100%;
+  overflow: hidden;
+}
+@media (max-width: 767.98px) {
+  body .business-value-container {
+    padding: 50px 20px;
+  }
+}
+body .business-value-container .section-title {
+  text-align: center;
+  margin-bottom: 40px;
+}
+body .business-value-container .value-card {
+  height: 100%;
+  padding: 30px 24px;
+  border: 1px solid rgb(207, 207, 207);
+  background-color: #151515;
+  transition: all 0.4s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+body .business-value-container .value-card:hover {
+  border-color: #ffffff;
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(124, 124, 124, 0.228);
+}
+body .business-value-container .value-card .icon-box {
+  font-size: 32px;
+  margin-bottom: 20px;
+}
+body .business-value-container .value-card h3 {
+  font-size: 20px;
+  font-weight: 300;
+  letter-spacing: 1px;
+  color: rgb(255, 253, 253);
+  margin-bottom: 15px;
+}
+body .business-value-container .value-card p {
+  font-size: 15px;
+  font-weight: 300;
+  letter-spacing: 1px;
+  color: rgb(207, 207, 207);
+  line-height: 1.6;
+  margin: 0;
+}
+body {
+  /* Projects Section */
+  /* Projects Section */
+}
 body .projects-container {
   overflow: hidden;
-  padding: 10px 70px;
+  padding: 10px 60px;
   width: 100%;
+}
+@media (max-width: 767.98px) {
+  body .projects-container {
+    padding: 10px 20px; /* تقليل البادنج في الموبايل عشان المساحة */
+  }
 }
 body .projects-container #copyRight {
   position: relative;
@@ -211,30 +286,70 @@ body .projects-container a {
   text-decoration: none;
   color: rgb(207, 207, 207);
 }
+body .projects-container .project-card-wraper {
+  width: 100%;
+  margin-bottom: 30px; /* مسافة بين كل صف والتاني */
+}
 body .projects-container .project-card {
-  height: 100%;
-  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 30px; /* مسافة مريحة بين الصورة والكلام */
+  width: 100%;
+  min-height: 350px; /* تحويل من height ثابت لـ min-height عشان النص لما يزيد ما يضربش الهيد */
+  height: auto;
+  padding: 24px;
   border: 1px solid rgb(207, 207, 207);
-  transition: filter 0.4s ease;
-}
-@media (max-width: 480px) {
-  body .projects-container .project-card {
-    padding: 5px;
-  }
-}
-body .projects-container .project-card img {
-  width: 200px;
-}
-body .projects-container .project-card .card-content {
-  margin: 10px 0 0 0;
-}
-body .projects-container .project-card .card-content .logos img {
-  width: 40px;
+  background-color: #151515;
+  transition: all 0.4s ease;
 }
 body .projects-container .project-card:hover {
-  filter: opacity(0.5);
+  border-color: #7e7c7c;
+}
+body .projects-container .project-card {
+  /* Responsive للموبايل والشاشات الصغار */
+}
+@media (max-width: 767.98px) {
+  body .projects-container .project-card {
+    flex-direction: column; /* الصورة تنزل فوق والنص تحتها في الموبايل */
+    padding: 15px;
+    height: auto;
+    gap: 20px;
+  }
+}
+body .projects-container .project-card {
+  /* تنسيق محاذاة الصورة */
+}
+body .projects-container .project-card img {
+  max-width: 45%; /* الصورة تاخد مساحة مناسبة وباقي المساحة للنص */
+  height: auto;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-radius: 4px;
+}
+@media (max-width: 767.98px) {
+  body .projects-container .project-card img {
+    max-width: 100%; /* على الموبايل تاخد العرض كامل */
+  }
+}
+body .projects-container .project-card {
+  /* تنسيق النص والوصف */
+}
+body .projects-container .project-card .card-content {
+  flex: 1; /* ياخد باقي المساحة المتبقية من الـ Row */
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+  text-align: center;
+}
+body .projects-container .project-card .card-content .logos img {
+  max-width: 35px;
+  height: auto;
 }
 
+/* Global / Independent Styles */
 #main-content-wraper {
   position: relative;
   z-index: 1;
@@ -254,4 +369,4 @@ body .projects-container .project-card:hover {
 .gray-window-content {
   position: relative;
   z-index: 1;
-} /*# sourceMappingURL=main.css.map */
+}/*# sourceMappingURL=main.css.map */

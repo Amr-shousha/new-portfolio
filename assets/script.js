@@ -14,10 +14,8 @@ document.addEventListener("DOMContentLoaded", function () {
   function showSection(activeSection) {
     sections.forEach((section) => {
       if (section === activeSection) {
-        section.style.display = "block"; // Force visibility
         section.classList.add("show");
       } else {
-        section.style.display = "none"; // Hide others
         section.classList.remove("show");
       }
     });
@@ -27,24 +25,32 @@ document.addEventListener("DOMContentLoaded", function () {
   infoBtn.addEventListener("click", (e) => {
     e.preventDefault();
     showSection(infoSection);
+    window.scrollTo({ top: 0, behavior: "smooth" });
   });
+
   contactBtn.addEventListener("click", (e) => {
     e.preventDefault();
     showSection(contactSection);
+    window.scrollTo({ top: 0, behavior: "smooth" });
   });
+
   skillsBtn.addEventListener("click", (e) => {
     e.preventDefault();
     showSection(skillsSection);
+    window.scrollTo({ top: 0, behavior: "smooth" });
   });
+
   contactSecondBtn.addEventListener("click", (e) => {
     e.preventDefault();
     showSection(contactSection);
+    window.scrollTo({ top: 0, behavior: "smooth" });
   });
+
   homeBtn.addEventListener("click", (e) => {
     e.preventDefault();
     showSection(homeSection);
+    window.scrollTo({ top: 0, behavior: "smooth" });
   });
-
   // Initialize
   showSection(homeSection);
 
@@ -79,7 +85,7 @@ document.addEventListener("DOMContentLoaded", function () {
           },
           move: {
             enable: true,
-            speed: 0.1, // Very slow drifting
+            speed: 0.2, // Very slow drifting
             direction: "none",
             random: true,
             outModes: "out",
@@ -99,7 +105,7 @@ document.addEventListener("DOMContentLoaded", function () {
             },
             repulse: {
               distance: 200,
-              duration: 0.4,
+              duration: 0.8,
             },
           },
         },

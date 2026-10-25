@@ -1,41 +1,9 @@
-// 1. Variables
-$main-font: "Main";
-$text-color: rgb(207, 207, 207);
-$bg-color: #0e0e0e;
-$border-color: #e0dbdb;
-$transition-speed: 0.4s;
-
-// 2. Font Faces
-// @charset "UTF-8";
-
-@mixin font-face($weight, $path) {
-  @font-face {
-    font-family: $main-font;
-    src: url($path);
-    font-weight: $weight;
-  }
-}
-
-@include font-face(
-  300,
-  "../fonts/M_PLUS_Code_Latin/static/MPLUSCodeLatin-Light.ttf"
-);
-@include font-face(
-  500,
-  "../fonts/M_PLUS_Code_Latin/static/MPLUSCodeLatin-Medium.ttf"
-);
-@include font-face(
-  600,
-  "../fonts/M_PLUS_Code_Latin/static/MPLUSCodeLatin-SemiBold.ttf"
-);
-
-// 3. Global Styles
 body {
-  font-family: $main-font !important;
-  color: $text-color !important;
-  background-color: $bg-color !important;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  color: rgb(207, 207, 207) !important;
+  background-color: #0e0e0e !important;
 
-  // Nesting everything inside body as per your CSS
+  /* Navigation */
   #bigger-nav {
     position: fixed;
     z-index: 3;
@@ -58,16 +26,18 @@ body {
     }
   }
 
+  /* Icons Container */
   .icons-container {
     margin-top: 50px;
     display: flex;
     gap: 20px;
     flex-wrap: wrap;
-    width: 150px;
+    max-width: 270px;
 
     img {
       width: 50px;
-      transition: all $transition-speed ease;
+      transition: all 0.4s ease;
+
       &:hover {
         filter: brightness(60%);
       }
@@ -78,11 +48,11 @@ body {
     }
   }
 
+  /* Section Title */
   .section-title {
-    font-family: $main-font;
     font-weight: 300;
     font-size: 30px;
-    color: $text-color;
+    color: rgb(207, 207, 207);
     letter-spacing: 2px;
 
     @media (max-width: 767.98px) {
@@ -90,6 +60,7 @@ body {
     }
   }
 
+  /* Hero Section */
   .hero-container {
     position: relative;
     overflow: hidden;
@@ -105,14 +76,14 @@ body {
       z-index: 2;
       overflow: hidden;
       margin: 0;
-      border: 1px solid $border-color;
+      border: 1px solid #e0dbdb;
       width: 100%;
       height: 100%;
       padding: 30px;
       background-size: 400% 400%;
 
+      /* Smaller Container Inside Hero */
       .smaller-container {
-        display: none;
         padding: 0 10% 0 0;
         margin: 0;
         position: absolute;
@@ -120,13 +91,29 @@ body {
         right: 50px;
         width: 65%;
         height: 60%;
-        transition: opacity 4s ease;
         flex-direction: column;
         justify-content: flex-start;
         align-items: flex-start;
 
+        /* --- بداية التعديلات الحركية (Smooth Transitions) --- */
+        display: flex; /* نجعلها دائمًا flex */
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(12px); /* نزول خفيف للأسفل ليبدأ منه التأثير */
+        pointer-events: none; /* لمنع الضغط على الأزرار المخفية في الخلفية */
+
+        /* حركة ناعمة وسريعة جداً بأسلوب ease-out */
+        transition:
+          opacity 0.35s ease-out,
+          transform 0.35s ease-out,
+          visibility 0.35s ease-out;
+
+        /* الحالة النشطة عند إضافة الكلاس */
         &.show {
-          display: flex;
+          opacity: 1;
+          visibility: visible;
+          transform: translateY(0); /* يصعد لمكانه الطبيعي */
+          pointer-events: auto; /* تفعيل التفاعل والأزرار */
         }
 
         .btn-container {
@@ -139,10 +126,23 @@ body {
             text-align: center;
             width: 150px;
             padding: 5px 0;
-            background-color: rgb(174, 255, 255);
-            border: 2px solid #2be6ff;
+            background-color: rgba(180, 200, 194, 0.2431372549);
+            border: 2px solid #ced0d3;
+            border-radius: 20px;
             font-weight: 600;
-            color: rgb(54, 54, 54);
+            color: rgb(255, 253, 253);
+            text-decoration: none;
+          }
+
+          .special-btn {
+            text-align: center;
+            width: 150px;
+            padding: 5px 0;
+            background-color: #10b981;
+            border: 2px solid #ced0d3;
+            border-radius: 20px;
+            font-weight: 600;
+            color: rgb(255, 253, 253);
             text-decoration: none;
           }
         }
@@ -152,7 +152,7 @@ body {
           letter-spacing: 2px;
           font-size: 20px;
           display: block;
-          max-width: 600px;
+          max-width: 640px;
           margin-top: 20px;
 
           @media (max-width: 767.98px) {
@@ -160,6 +160,7 @@ body {
             margin-top: 5px;
             width: auto;
           }
+
           @media (max-width: 480px) {
             font-size: 16px;
           }
@@ -190,17 +191,20 @@ body {
         left: 30px;
       }
 
+      /* Name Section Header */
       .name-section {
         b {
           letter-spacing: 2px;
           font-weight: 300;
         }
+
         h1 {
           font-size: 55px;
           letter-spacing: 6px;
           font-weight: 300;
           word-spacing: -16px;
           display: block;
+
           @media (max-width: 767.98px) {
             font-size: 40px;
           }
@@ -208,11 +212,71 @@ body {
       }
     }
   }
+  /* Business Value Section */
+  .business-value-container {
+    padding: 80px 70px;
+    width: 100%;
+    overflow: hidden;
 
+    @media (max-width: 767.98px) {
+      padding: 50px 20px;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .value-card {
+      height: 100%;
+      padding: 30px 24px;
+      border: 1px solid rgb(207, 207, 207);
+      background-color: #151515;
+      transition: all 0.4s ease;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: flex-start;
+
+      &:hover {
+        border-color: #ffffff;
+        transform: translateY(-5px);
+        box-shadow: 0 10px 30px rgba(124, 124, 124, 0.228);
+      }
+
+      .icon-box {
+        font-size: 32px;
+        margin-bottom: 20px;
+      }
+
+      h3 {
+        font-size: 20px;
+        font-weight: 300;
+        letter-spacing: 1px;
+        color: rgb(255, 253, 253);
+        margin-bottom: 15px;
+      }
+
+      p {
+        font-size: 15px;
+        font-weight: 300;
+        letter-spacing: 1px;
+        color: rgb(207, 207, 207);
+        line-height: 1.6;
+        margin: 0;
+      }
+    }
+  }
+  /* Projects Section */
+  /* Projects Section */
   .projects-container {
     overflow: hidden;
-    padding: 10px 70px;
+    padding: 10px 60px;
     width: 100%;
+
+    @media (max-width: 767.98px) {
+      padding: 10px 20px; /* تقليل البادنج في الموبايل عشان المساحة */
+    }
 
     #copyRight {
       position: relative;
@@ -232,38 +296,69 @@ body {
 
     a {
       text-decoration: none;
-      color: $text-color;
+      color: rgb(207, 207, 207);
+    }
+
+    .project-card-wraper {
+      width: 100%;
+      margin-bottom: 30px; /* مسافة بين كل صف والتاني */
     }
 
     .project-card {
-      height: 100%;
-      padding: 10px;
-      border: 1px solid $text-color;
-      transition: filter $transition-speed ease;
-
-      @media (max-width: 480px) {
-        padding: 5px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 30px; /* مسافة مريحة بين الصورة والكلام */
+      width: 100%;
+      min-height: 350px; /* تحويل من height ثابت لـ min-height عشان النص لما يزيد ما يضربش الهيد */
+      height: auto;
+      padding: 24px;
+      border: 1px solid rgb(207, 207, 207);
+      background-color: #151515;
+      transition: all 0.4s ease;
+      &:hover {
+        border-color: #7e7c7c;
       }
 
+      /* Responsive للموبايل والشاشات الصغار */
+      @media (max-width: 767.98px) {
+        flex-direction: column; /* الصورة تنزل فوق والنص تحتها في الموبايل */
+        padding: 15px;
+        height: auto;
+        gap: 20px;
+      }
+
+      /* تنسيق محاذاة الصورة */
       img {
-        width: 200px;
-      }
+        max-width: 45%; /* الصورة تاخد مساحة مناسبة وباقي المساحة للنص */
+        height: auto;
+        object-fit: cover;
+        border-radius: 4px;
 
-      .card-content {
-        margin: 10px 0 0 0;
-        .logos img {
-          width: 40px;
+        @media (max-width: 767.98px) {
+          max-width: 100%; /* على الموبايل تاخد العرض كامل */
         }
       }
 
-      &:hover {
-        filter: opacity(0.5);
+      /* تنسيق النص والوصف */
+      .card-content {
+        flex: 1; /* ياخد باقي المساحة المتبقية من الـ Row */
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        height: 100%;
+        text-align: center;
+        .logos img {
+          max-width: 35px;
+          height: auto;
+        }
       }
     }
   }
 }
 
-// 4. Background/Utility Classes
+/* Global / Independent Styles */
 #main-content-wraper {
   position: relative;
   z-index: 1;
