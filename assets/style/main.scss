@@ -152,7 +152,7 @@ body {
           letter-spacing: 2px;
           font-size: 20px;
           display: block;
-          max-width: 640px;
+          max-width: 500px;
           margin-top: 20px;
 
           @media (max-width: 767.98px) {
@@ -229,14 +229,13 @@ body {
 
     .value-card {
       height: 100%;
-      padding: 30px 24px;
+      padding: 30px 10px;
       border: 1px solid rgb(207, 207, 207);
       background-color: #151515;
       transition: all 0.4s ease;
       display: flex;
+      flex-wrap: wrap;
       flex-direction: column;
-      justify-content: flex-start;
-      align-items: flex-start;
 
       &:hover {
         border-color: #ffffff;
