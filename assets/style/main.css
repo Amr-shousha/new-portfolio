@@ -30,11 +30,11 @@ body {
   /* Icons Container */
 }
 body .icons-container {
-  margin-top: 50px;
+  margin-top: 30px;
   display: flex;
   gap: 20px;
   flex-wrap: wrap;
-  max-width: 270px;
+  max-width: 400px;
 }
 body .icons-container img {
   width: 50px;
@@ -84,6 +84,46 @@ body .hero-container .main-content {
   height: 100%;
   padding: 30px;
   background-size: 400% 400%;
+}
+body .hero-container .main-content .scroll-down-indicator {
+  position: absolute;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: rgb(207, 207, 207);
+  opacity: 0.7;
+  transition: opacity 0.3s ease;
+  cursor: pointer;
+}
+body .hero-container .main-content .scroll-down-indicator:hover {
+  opacity: 1;
+}
+body .hero-container .main-content .scroll-down-indicator span {
+  font-size: 12px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 5px;
+  font-weight: 300;
+}
+body .hero-container .main-content .scroll-down-indicator .arrow-icon {
+  font-size: 18px;
+  animation: bounce 2s infinite;
+}
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(6px);
+  }
+  60% {
+    transform: translateY(3px);
+  }
+}
+body .hero-container .main-content {
   /* Smaller Container Inside Hero */
 }
 body .hero-container .main-content .smaller-container {
@@ -146,7 +186,7 @@ body .hero-container .main-content .smaller-container .smaller-container-p {
   letter-spacing: 2px;
   font-size: 20px;
   display: block;
-  max-width: 500px;
+  max-width: 600px;
   margin-top: 20px;
 }
 @media (max-width: 767.98px) {
